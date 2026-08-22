@@ -1,1 +1,901 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>iPhoneFix - Réparation iPhone</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #03080d;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 92%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* ================= HEADER ================= */
+
+header {
+    height: 75px;
+    border-bottom: 1px solid #193242;
+    background: #03080d;
+}
+
+.nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 900;
+}
+
+.logo span {
+    color: #0798ff;
+}
+
+.tag {
+    display: block;
+    color: #9eacb5;
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.links {
+    display: flex;
+    gap: 30px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.links a:hover {
+    color: #0798ff;
+}
+
+.btn {
+    display: inline-block;
+    background: #0798ff;
+    color: white;
+    padding: 14px 22px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #36aaff;
+    transform: translateY(-2px);
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #193242;
+
+    background:
+        radial-gradient(
+            circle at 75% 50%,
+            rgba(0, 130, 255, 0.35),
+            transparent 30%
+        ),
+        linear-gradient(
+            90deg,
+            #03080d 0%,
+            #03080d 45%,
+            #06131e 100%
+        );
+}
+
+.heroText {
+    max-width: 620px;
+}
+
+.badge {
+    display: inline-block;
+    border: 1px solid #0798ff;
+    padding: 7px 14px;
+    border-radius: 25px;
+    font-size: 12px;
+}
+
+.hero h1 {
+    font-size: 58px;
+    line-height: 0.98;
+    margin: 20px 0;
+    letter-spacing: -2px;
+}
+
+.hero h1 span,
+h2 span {
+    color: #0798ff;
+}
+
+.hero p {
+    color: #c4d0d8;
+    line-height: 1.6;
+    max-width: 580px;
+}
+
+.trust {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+    color: #bfcbd3;
+    font-size: 11px;
+}
+
+.trust b {
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+}
+
+/* ================= SECTIONS ================= */
+
+section {
+    padding: 50px 0;
+    border-bottom: 1px solid #193242;
+}
+
+.eyebrow {
+    font-size: 12px;
+    color: #0798ff;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 34px;
+    margin: 8px 0;
+}
+
+.sub {
+    color: #aebcc5;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ================= SERVICES ================= */
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.service {
+    display: block;
+    min-height: 155px;
+    border: 1px solid #294456;
+    border-radius: 12px;
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0a1721,
+            #061019
+        );
+
+    transition: 0.25s;
+}
+
+.service:hover {
+    transform: translateY(-5px);
+    border-color: #0798ff;
+    box-shadow: 0 10px 35px rgba(0, 150, 255, 0.18);
+}
+
+.icon {
+    width: 36px;
+    height: 36px;
+    background: #0798ff;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 15px;
+}
+
+.service h3 {
+    font-size: 15px;
+    margin: 0 0 7px;
+}
+
+.service p {
+    font-size: 12px;
+    color: #aebcc5;
+    margin: 0;
+}
+
+/* ================= MODELES ================= */
+
+.models {
+    margin-top: 20px;
+    padding: 25px;
+
+    border: 1px solid #294456;
+    border-radius: 12px;
+
+    background: #08141d;
+}
+
+.models ul {
+    columns: 2;
+    list-style: none;
+    padding: 0;
+
+    color: #c8d3da;
+
+    font-size: 13px;
+    line-height: 2;
+}
+
+.models li::before {
+    content: "✓";
+    color: #0798ff;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* ================= TARIFS ================= */
+
+.tarifs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.price {
+    border: 1px solid #294456;
+    background: #08141d;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.price h3 {
+    margin: 0;
+}
+
+.price strong {
+    display: block;
+    margin-top: 12px;
+
+    color: #0798ff;
+    font-size: 28px;
+}
+
+/* ================= CONTACT ================= */
+
+.contact {
+    text-align: center;
+}
+
+.contact p {
+    max-width: 650px;
+    margin: 12px auto 25px;
+}
+
+.phone {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    padding: 30px 0;
+    color: #91a0aa;
+    font-size: 12px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 750px) {
+
+    .links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .services,
+    .tarifs {
+        grid-template-columns: 1fr;
+    }
+
+    .models ul {
+        columns: 1;
+    }
+
+    .trust {
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="container nav">
+
+<a href="#accueil">
+
+<div class="logo">
+
+● iPhone<span>Fix</span>
+
+<span class="tag">
+Réparation iPhone • Rapide • Fiable • Professionnel
+</span>
+
+</div>
+
+</a>
+
+
+<nav class="links">
+
+<a href="#accueil">Accueil</a>
+
+<a href="#services">Services</a>
+
+<a href="#tarifs">Tarifs</a>
+
+<a href="#apropos">À propos</a>
+
+<a href="#contact">Contact</a>
+
+</nav>
+
+
+<a
+class="btn"
+href="https://wa.me/33712345678"
+target="_blank"
+>
+WhatsApp
+</a>
+
+</div>
+
+</header>
+
+
+<!-- ================= ACCUEIL ================= -->
+
+<section id="accueil" class="hero">
+
+<div class="container">
+
+<div class="heroText">
+
+<div class="badge">
+⚡ Réparation iPhone en moins de 24h
+</div>
+
+
+<h1>
+
+Votre iPhone<br>
+
+<span>est en panne ?</span><br>
+
+On s'en occupe !
+
+</h1>
+
+
+<p>
+
+Réparation rapide et professionnelle de tous les modèles
+d'iPhone, avec des pièces de qualité et une garantie
+sur chaque intervention.
+
+</p>
+
+
+<a
+class="btn"
+href="https://wa.me/33712345678"
+target="_blank"
+>
+
+Contacter sur WhatsApp →
+
+</a>
+
+
+<div class="trust">
+
+<div>
+
+<b>◷ Réparation rapide</b>
+
+30 min à 2h
+
+</div>
+
+
+<div>
+
+<b>◇ Pièces de qualité</b>
+
+Origine / compatible
+
+</div>
+
+
+<div>
+
+<b>✦ Garantie</b>
+
+Sur les réparations
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= SERVICES ================= -->
+
+<section id="services">
+
+<div class="container">
+
+
+<div class="eyebrow">
+Nos services
+</div>
+
+
+<h2>
+Toutes les réparations <span>iPhone</span>
+</h2>
+
+
+<p class="sub">
+
+Écran cassé, batterie qui fatigue, problème de charge...
+
+<br>
+
+Nous réparons tous les modèles d'iPhone.
+
+</p>
+
+
+
+<div class="services">
+
+
+<!-- ECRAN -->
+
+<a
+class="service"
+href="#tarifs"
+>
+
+<div class="icon">
+▣
+</div>
+
+<h3>
+Écran cassé
+</h3>
+
+<p>
+Remplacement rapide de votre écran
+</p>
+
+</a>
+
+
+
+<!-- BATTERIE -->
+
+<a
+class="service"
+href="#tarifs"
+>
+
+<div class="icon">
+▣
+</div>
+
+<h3>
+Batterie
+</h3>
+
+<p>
+Remplacement pour une meilleure autonomie
+</p>
+
+</a>
+
+
+
+<!-- CONNECTEUR -->
+
+<a
+class="service"
+href="#tarifs"
+>
+
+<div class="icon">
+⚡
+</div>
+
+<h3>
+Connecteur de charge
+</h3>
+
+<p>
+Problème de recharge ? On le répare.
+</p>
+
+</a>
+
+
+
+<!-- CAMERA -->
+
+<a
+class="service"
+href="#tarifs"
+>
+
+<div class="icon">
+◉
+</div>
+
+<h3>
+Caméra
+</h3>
+
+<p>
+Réparation ou remplacement
+</p>
+
+</a>
+
+
+
+<!-- HAUT PARLEUR -->
+
+<a
+class="service"
+href="#tarifs"
+>
+
+<div class="icon">
+♪
+</div>
+
+<h3>
+Haut-parleur / Micro
+</h3>
+
+<p>
+Son faible ou absent ?
+</p>
+
+</a>
+
+
+
+<!-- EAU -->
+
+<a
+class="service"
+href="#tarifs"
+>
+
+<div class="icon">
+✣
+</div>
+
+<h3>
+Dégât des eaux
+</h3>
+
+<p>
+Diagnostic et réparation spécialisée
+</p>
+
+</a>
+
+
+</div>
+
+
+
+<!-- ================= MODELES ================= -->
+
+<div class="models">
+
+<div class="eyebrow">
+Tous les modèles
+</div>
+
+
+<h2>
+ iPhone
+</h2>
+
+
+<ul>
+
+<li>
+iPhone 15 / 15 Pro / Pro Max
+</li>
+
+<li>
+iPhone 14 / 14 Pro / Pro Max
+</li>
+
+<li>
+iPhone 13 / 13 Pro / Pro Max
+</li>
+
+<li>
+iPhone 12 / 12 Pro / Pro Max
+</li>
+
+<li>
+iPhone 11 / 11 Pro / Pro Max
+</li>
+
+<li>
+iPhone SE — toutes générations
+</li>
+
+</ul>
+
+
+<a
+class="btn"
+href="#tarifs"
+>
+
+Voir tous les tarifs →
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= A PROPOS ================= -->
+
+<section id="apropos">
+
+<div class="container">
+
+<div class="eyebrow">
+Pourquoi nous choisir ?
+</div>
+
+
+<h2>
+
+Votre satisfaction
+<span>
+est notre priorité
+</span>
+
+</h2>
+
+
+<p class="sub">
+
+Techniciens qualifiés, pièces de qualité
+et service client réactif.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= TARIFS ================= -->
+
+<section id="tarifs">
+
+<div class="container">
+
+<div class="eyebrow">
+Tarifs
+</div>
+
+
+<h2>
+
+Des prix
+<span>
+transparents
+</span>
+
+</h2>
+
+
+<p class="sub">
+
+Voici les tarifs. Tu pourras les modifier plus tard
+directement dans ce HTML.
+
+</p>
+
+
+
+<div class="tarifs">
+
+
+<div class="price">
+
+<h3>
+Écran
+</h3>
+
+<strong>
+49€+
+</strong>
+
+</div>
+
+
+
+<div class="price">
+
+<h3>
+Batterie
+</h3>
+
+<strong>
+39€+
+</strong>
+
+</div>
+
+
+
+<div class="price">
+
+<h3>
+Connecteur
+</h3>
+
+<strong>
+Sur devis
+</strong>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact" class="contact">
+
+<div class="container">
+
+<div class="eyebrow">
+Contact
+</div>
+
+
+<h2>
+
+Contactez
+<span>
+iPhoneFix
+</span>
+
+</h2>
+
+
+<p class="sub">
+
+Envoyez une photo de votre iPhone sur WhatsApp
+pour obtenir un premier diagnostic.
+
+</p>
+
+
+<a
+class="btn"
+href="https://wa.me/33712345678"
+target="_blank"
+>
+
+Contacter sur WhatsApp
+
+</a>
+
+
+<div class="phone">
+
+07 12 34 56 78
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="container">
+
+© 2026 iPhoneFix — Réparation iPhone • Rapide • Fiable • Professionnel
+
+</div>
+
+</footer>
+
+
+</body>
+</html>
