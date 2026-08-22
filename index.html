@@ -3,826 +3,831 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>iPhoneFix - Réparation iPhone</title>
+<title>iPhoneFix — Réparation iPhone</title>
 
 <style>
-* {
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    margin: 0;
-    background: #03080d;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#020b12;
+    color:white;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+a{
+    text-decoration:none;
+    color:inherit;
 }
 
-.container {
-    width: 92%;
-    max-width: 1150px;
-    margin: auto;
+button{
+    font-family:inherit;
+}
+
+.container{
+    width:90%;
+    max-width:1150px;
+    margin:auto;
 }
 
 /* ================= HEADER ================= */
 
-header {
-    height: 75px;
-    border-bottom: 1px solid #193242;
-    background: #03080d;
+header{
+    height:75px;
+    background:#050b11;
+    border-bottom:1px solid #20313d;
+    display:flex;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
-.nav {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.logo {
-    font-size: 27px;
-    font-weight: 900;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.logo span {
-    color: #0798ff;
+.logo-apple{
+    font-size:43px;
 }
 
-.tag {
-    display: block;
-    color: #9eacb5;
-    font-size: 10px;
-    font-weight: normal;
+.logo-text{
+    font-size:25px;
+    font-weight:800;
 }
 
-.links {
-    display: flex;
-    gap: 30px;
-    font-size: 14px;
-    font-weight: bold;
+.logo-text span{
+    color:#0797ff;
 }
 
-.links a:hover {
-    color: #0798ff;
+.logo-sub{
+    font-size:11px;
+    color:#b9c4cc;
+    margin-top:2px;
 }
 
-.btn {
-    display: inline-block;
-    background: #0798ff;
-    color: white;
-    padding: 14px 22px;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: 0.2s;
+nav{
+    display:flex;
+    gap:38px;
+    align-items:center;
 }
 
-.btn:hover {
-    background: #36aaff;
-    transform: translateY(-2px);
+nav a{
+    font-size:14px;
+    font-weight:600;
+    padding:27px 0;
+    transition:.2s;
+}
+
+nav a:hover,
+nav a.active{
+    color:#0797ff;
+}
+
+.contact-top{
+    background:#0797ff;
+    padding:12px 22px;
+    border-radius:30px;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.contact-top:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 25px #0797ff66;
 }
 
 /* ================= HERO ================= */
 
-.hero {
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #193242;
-
+.hero{
+    min-height:480px;
+    position:relative;
+    overflow:hidden;
     background:
-        radial-gradient(
-            circle at 75% 50%,
-            rgba(0, 130, 255, 0.35),
-            transparent 30%
-        ),
-        linear-gradient(
-            90deg,
-            #03080d 0%,
-            #03080d 45%,
-            #06131e 100%
-        );
+        radial-gradient(circle at 70% 55%,#063b63 0%,transparent 35%),
+        linear-gradient(90deg,#02080d 15%,#04131e 55%,#02080d);
 }
 
-.heroText {
-    max-width: 620px;
+.hero:after{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    right:-150px;
+    top:-150px;
+    background:#008cff;
+    filter:blur(180px);
+    opacity:.12;
 }
 
-.badge {
-    display: inline-block;
-    border: 1px solid #0798ff;
-    padding: 7px 14px;
-    border-radius: 25px;
-    font-size: 12px;
+.hero-content{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:43% 57%;
+    min-height:480px;
+    align-items:center;
 }
 
-.hero h1 {
-    font-size: 58px;
-    line-height: 0.98;
-    margin: 20px 0;
-    letter-spacing: -2px;
+.badge{
+    display:inline-block;
+    border:1px solid #0797ff;
+    color:white;
+    border-radius:25px;
+    padding:7px 15px;
+    font-size:13px;
+    margin-bottom:15px;
 }
 
-.hero h1 span,
-h2 span {
-    color: #0798ff;
+.hero h1{
+    font-size:54px;
+    line-height:1.02;
+    margin-bottom:12px;
 }
 
-.hero p {
-    color: #c4d0d8;
-    line-height: 1.6;
-    max-width: 580px;
+.hero h1 span{
+    color:#0797ff;
 }
 
-.trust {
-    display: flex;
-    gap: 30px;
-    margin-top: 30px;
-    color: #bfcbd3;
-    font-size: 11px;
+.hero p{
+    color:#c5d0d8;
+    font-size:16px;
+    line-height:1.5;
+    max-width:480px;
+    margin-bottom:25px;
 }
 
-.trust b {
-    display: block;
-    color: white;
-    margin-bottom: 5px;
+.main-button{
+    display:inline-block;
+    background:#0797ff;
+    color:white;
+    padding:14px 24px;
+    border-radius:30px;
+    font-weight:bold;
+    transition:.25s;
 }
 
-/* ================= SECTIONS ================= */
-
-section {
-    padding: 50px 0;
-    border-bottom: 1px solid #193242;
+.main-button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 35px #0797ff55;
 }
 
-.eyebrow {
-    font-size: 12px;
-    color: #0798ff;
-    font-weight: 900;
-    text-transform: uppercase;
+.hero-phones{
+    position:relative;
+    height:450px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-h2 {
-    font-size: 34px;
-    margin: 8px 0;
+/* Faux iPhone réaliste en CSS */
+.phone{
+    width:145px;
+    height:290px;
+    border-radius:27px;
+    position:absolute;
+    border:5px solid #20252a;
+    box-shadow:0 25px 50px #000b;
+    overflow:hidden;
+    background:linear-gradient(145deg,#1b82d9,#020b18);
 }
 
-.sub {
-    color: #aebcc5;
-    font-size: 14px;
-    line-height: 1.6;
+.phone:before{
+    content:"";
+    position:absolute;
+    width:45px;
+    height:12px;
+    background:#020306;
+    border-radius:10px;
+    top:8px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:3;
+}
+
+.phone:after{
+    content:"";
+    position:absolute;
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    background:#168cff;
+    filter:blur(15px);
+    left:30px;
+    top:100px;
+    opacity:.8;
+}
+
+.phone1{
+    transform:translateX(-135px) rotate(-5deg);
+    z-index:2;
+    background:linear-gradient(145deg,#777,#111);
+}
+
+.phone2{
+    transform:translateX(0) rotate(0);
+    z-index:3;
+    width:155px;
+    height:315px;
+}
+
+.phone3{
+    transform:translateX(130px) rotate(6deg);
+    z-index:2;
+    background:linear-gradient(145deg,#9a78dc,#20152f);
+}
+
+.camera{
+    position:absolute;
+    top:18px;
+    left:15px;
+    width:48px;
+    height:48px;
+    background:#151515;
+    border-radius:14px;
+    z-index:5;
+}
+
+.camera i{
+    display:block;
+    width:13px;
+    height:13px;
+    border-radius:50%;
+    background:#111;
+    border:2px solid #777;
+    margin:4px;
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+    display:flex;
+    gap:55px;
+    margin-top:-25px;
+    position:relative;
+    z-index:10;
+    padding-bottom:40px;
+}
+
+.feature{
+    display:flex;
+    gap:12px;
+    align-items:center;
+}
+
+.feature-icon{
+    width:38px;
+    height:38px;
+    border:3px solid #0797ff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#0797ff;
+    font-weight:bold;
+}
+
+.feature strong{
+    display:block;
+    font-size:14px;
+}
+
+.feature small{
+    color:#aab7c0;
 }
 
 /* ================= SERVICES ================= */
 
-.services {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-top: 25px;
+.services{
+    background:#031019;
+    border-top:1px solid #243744;
+    padding:55px 0;
 }
 
-.service {
-    display: block;
-    min-height: 155px;
-    border: 1px solid #294456;
-    border-radius: 12px;
-    padding: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #0a1721,
-            #061019
-        );
-
-    transition: 0.25s;
+.section-title{
+    margin-bottom:30px;
 }
 
-.service:hover {
-    transform: translateY(-5px);
-    border-color: #0798ff;
-    box-shadow: 0 10px 35px rgba(0, 150, 255, 0.18);
+.section-title small{
+    color:#0797ff;
+    font-weight:bold;
 }
 
-.icon {
-    width: 36px;
-    height: 36px;
-    background: #0798ff;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 15px;
+.section-title h2{
+    font-size:32px;
+    margin:7px 0;
 }
 
-.service h3 {
-    font-size: 15px;
-    margin: 0 0 7px;
+.section-title h2 span{
+    color:#0797ff;
 }
 
-.service p {
-    font-size: 12px;
-    color: #aebcc5;
-    margin: 0;
+.section-title p{
+    color:#aebac3;
+}
+
+.services-layout{
+    display:grid;
+    grid-template-columns:1fr 320px;
+    gap:25px;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:13px;
+}
+
+.card{
+    min-height:145px;
+    border:1px solid #355061;
+    border-radius:10px;
+    padding:18px;
+    background:linear-gradient(145deg,#101b23,#071018);
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#0797ff;
+    transform:translateY(-4px);
+    box-shadow:0 10px 30px #0008;
+}
+
+.card-icon{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#0797ff;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:19px;
+    margin-bottom:13px;
+}
+
+.card h3{
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.card p{
+    font-size:12px;
+    color:#aebac3;
+    line-height:1.4;
 }
 
 /* ================= MODELES ================= */
 
-.models {
-    margin-top: 20px;
-    padding: 25px;
-
-    border: 1px solid #294456;
-    border-radius: 12px;
-
-    background: #08141d;
+.models{
+    border:1px solid #355061;
+    border-radius:10px;
+    padding:25px;
+    background:linear-gradient(145deg,#0d1a23,#050b10);
 }
 
-.models ul {
-    columns: 2;
-    list-style: none;
-    padding: 0;
-
-    color: #c8d3da;
-
-    font-size: 13px;
-    line-height: 2;
+.models h3{
+    font-size:25px;
+    margin:12px 0 20px;
 }
 
-.models li::before {
-    content: "✓";
-    color: #0798ff;
-    font-weight: bold;
-    margin-right: 10px;
+.models h3 span{
+    color:#0797ff;
 }
 
-/* ================= TARIFS ================= */
-
-.tarifs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-top: 25px;
+.models li{
+    list-style:none;
+    margin:12px 0;
+    color:#cbd4da;
+    font-size:13px;
 }
 
-.price {
-    border: 1px solid #294456;
-    background: #08141d;
-    border-radius: 12px;
-    padding: 25px;
+.models li:before{
+    content:"✓";
+    color:#0797ff;
+    font-weight:bold;
+    margin-right:10px;
 }
 
-.price h3 {
-    margin: 0;
+.models .main-button{
+    width:100%;
+    text-align:center;
+    margin-top:15px;
 }
 
-.price strong {
-    display: block;
-    margin-top: 12px;
+/* ================= WHY ================= */
 
-    color: #0798ff;
-    font-size: 28px;
+.why{
+    padding:0;
+    background:#02090e;
+}
+
+.why-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:230px;
+}
+
+.repair-photo{
+    background:
+        linear-gradient(90deg,#0005,#0000),
+        url("https://www.phonepirates.com.au/static/images/iphone-repair.jpg");
+    background-size:cover;
+    background-position:center;
+    min-height:230px;
+}
+
+.why-text{
+    padding:35px;
+}
+
+.why-text small{
+    color:#0797ff;
+    font-weight:bold;
+}
+
+.why-text h2{
+    font-size:28px;
+    margin:7px 0 12px;
+}
+
+.why-text h2 span{
+    color:#0797ff;
+}
+
+.why-text p{
+    color:#aebac3;
+    line-height:1.5;
 }
 
 /* ================= CONTACT ================= */
 
-.contact {
-    text-align: center;
+.contact{
+    padding:55px 0;
+    background:#031019;
+    text-align:center;
 }
 
-.contact p {
-    max-width: 650px;
-    margin: 12px auto 25px;
+.contact h2{
+    font-size:32px;
+    margin-bottom:10px;
 }
 
-.phone {
-    font-size: 22px;
-    font-weight: bold;
-    margin-top: 15px;
+.contact p{
+    color:#aebac3;
+    margin-bottom:25px;
+}
+
+.contact-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
 /* ================= FOOTER ================= */
 
-footer {
-    padding: 30px 0;
-    color: #91a0aa;
-    font-size: 12px;
+footer{
+    border-top:1px solid #243744;
+    background:#02080d;
+    padding:30px 0;
 }
 
-/* ================= MOBILE ================= */
+.footer-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 
-@media (max-width: 750px) {
+footer p{
+    color:#7f8b94;
+    font-size:12px;
+}
 
-    .links {
-        display: none;
+.social{
+    display:flex;
+    gap:20px;
+}
+
+.social a{
+    color:#c8d1d7;
+    transition:.2s;
+}
+
+.social a:hover{
+    color:#0797ff;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    nav{
+        display:none;
     }
 
-    .hero h1 {
-        font-size: 43px;
+    .hero-content{
+        grid-template-columns:1fr;
+        padding:40px 0;
     }
 
-    .services,
-    .tarifs {
-        grid-template-columns: 1fr;
+    .hero{
+        min-height:auto;
     }
 
-    .models ul {
-        columns: 1;
+    .hero-phones{
+        height:350px;
     }
 
-    .trust {
-        flex-wrap: wrap;
-        gap: 18px;
+    .hero h1{
+        font-size:43px;
+    }
+
+    .services-layout{
+        grid-template-columns:1fr;
+    }
+
+    .service-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .why-content{
+        grid-template-columns:1fr;
+    }
+
+    .repair-photo{
+        min-height:250px;
+    }
+}
+
+@media(max-width:600px){
+
+    .contact-top{
+        display:none;
+    }
+
+    .service-grid{
+        grid-template-columns:1fr;
+    }
+
+    .features{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:20px;
+        margin-top:0;
+        padding:30px 0;
+    }
+
+    .hero h1{
+        font-size:37px;
+    }
+
+    .phone1{
+        transform:translateX(-90px) rotate(-5deg);
+    }
+
+    .phone3{
+        transform:translateX(90px) rotate(5deg);
+    }
+
+    .footer-content{
+        flex-direction:column;
+        gap:20px;
     }
 }
 </style>
 </head>
 
-
 <body>
 
-<!-- ================= HEADER ================= -->
-
+<!-- HEADER -->
 <header>
-
 <div class="container nav">
 
-<a href="#accueil">
-
-<div class="logo">
-
-● iPhone<span>Fix</span>
-
-<span class="tag">
-Réparation iPhone • Rapide • Fiable • Professionnel
-</span>
-
+<a href="#accueil" class="logo">
+<div class="logo-apple">●</div>
+<div>
+<div class="logo-text">iPhone<span>Fix</span></div>
+<div class="logo-sub">Réparation iPhone • Rapide • Fiable • Professionnel</div>
 </div>
-
 </a>
 
-
-<nav class="links">
-
-<a href="#accueil">Accueil</a>
-
+<nav>
+<a href="#accueil" class="active">Accueil</a>
 <a href="#services">Services</a>
-
 <a href="#tarifs">Tarifs</a>
-
 <a href="#apropos">À propos</a>
-
 <a href="#contact">Contact</a>
-
 </nav>
 
-
-<a
-class="btn"
-href="https://wa.me/33712345678"
-target="_blank"
->
-WhatsApp
-</a>
+<a href="#contact" class="contact-top">💬 Nous contacter</a>
 
 </div>
-
 </header>
 
 
-<!-- ================= ACCUEIL ================= -->
+<!-- HERO -->
+<section class="hero" id="accueil">
 
-<section id="accueil" class="hero">
+<div class="container hero-content">
 
-<div class="container">
+<div>
 
-<div class="heroText">
-
-<div class="badge">
-⚡ Réparation iPhone en moins de 24h
-</div>
-
+<div class="badge">⚡ Réparation iPhone en moins de 24h</div>
 
 <h1>
-
 Votre iPhone<br>
-
 <span>est en panne ?</span><br>
-
-On s'en occupe !
-
+On s’en occupe !
 </h1>
 
-
 <p>
-
 Réparation rapide et professionnelle de tous les modèles
-d'iPhone, avec des pièces de qualité et une garantie
+d’iPhone, avec des pièces de qualité et une garantie
 sur chaque intervention.
-
 </p>
 
-
-<a
-class="btn"
-href="https://wa.me/33712345678"
-target="_blank"
->
-
-Contacter sur WhatsApp →
-
+<a href="#contact" class="main-button">
+💬 Contactez-nous sur WhatsApp →
 </a>
 
-
-<div class="trust">
-
-<div>
-
-<b>◷ Réparation rapide</b>
-
-30 min à 2h
-
 </div>
 
 
-<div>
+<div class="hero-phones">
 
-<b>◇ Pièces de qualité</b>
-
-Origine / compatible
-
+<div class="phone phone1">
+<div class="camera">
+<i></i><i></i><i></i>
+</div>
 </div>
 
+<div class="phone phone2">
+<div class="camera">
+<i></i><i></i><i></i>
+</div>
+</div>
 
-<div>
-
-<b>✦ Garantie</b>
-
-Sur les réparations
-
+<div class="phone phone3">
+<div class="camera">
+<i></i><i></i><i></i>
+</div>
 </div>
 
 </div>
 
 </div>
-
-</div>
-
 </section>
 
 
+<!-- FEATURES -->
+<div class="container features">
 
-<!-- ================= SERVICES ================= -->
+<div class="feature">
+<div class="feature-icon">◷</div>
+<div>
+<strong>Réparation rapide</strong>
+<small>30 min à 2h</small>
+</div>
+</div>
 
-<section id="services">
+<div class="feature">
+<div class="feature-icon">✓</div>
+<div>
+<strong>Pièces de qualité</strong>
+<small>Originales / compatibles</small>
+</div>
+</div>
+
+<div class="feature">
+<div class="feature-icon">★</div>
+<div>
+<strong>Garantie</strong>
+<small>Sur toutes les réparations</small>
+</div>
+</div>
+
+</div>
+
+
+<!-- SERVICES -->
+<section class="services" id="services">
 
 <div class="container">
 
-
-<div class="eyebrow">
-Nos services
-</div>
-
-
-<h2>
-Toutes les réparations <span>iPhone</span>
-</h2>
-
-
-<p class="sub">
-
+<div class="section-title">
+<small>NOS SERVICES</small>
+<h2>Toutes les réparations <span>iPhone</span></h2>
+<p>
 Écran cassé, batterie qui fatigue, problème de charge...
-
-<br>
-
-Nous réparons tous les modèles d'iPhone.
-
 </p>
-
-
-
-<div class="services">
-
-
-<!-- ECRAN -->
-
-<a
-class="service"
-href="#tarifs"
->
-
-<div class="icon">
-▣
 </div>
 
-<h3>
-Écran cassé
-</h3>
 
-<p>
-Remplacement rapide de votre écran
-</p>
+<div class="services-layout">
 
+<div class="service-grid">
+
+<a href="#tarifs" class="card">
+<div class="card-icon">▣</div>
+<h3>Écran cassé</h3>
+<p>Remplacement rapide de votre écran.</p>
 </a>
 
-
-
-<!-- BATTERIE -->
-
-<a
-class="service"
-href="#tarifs"
->
-
-<div class="icon">
-▣
-</div>
-
-<h3>
-Batterie
-</h3>
-
-<p>
-Remplacement pour une meilleure autonomie
-</p>
-
+<a href="#tarifs" class="card">
+<div class="card-icon">▣</div>
+<h3>Batterie</h3>
+<p>Remplacement pour une meilleure autonomie.</p>
 </a>
 
-
-
-<!-- CONNECTEUR -->
-
-<a
-class="service"
-href="#tarifs"
->
-
-<div class="icon">
-⚡
-</div>
-
-<h3>
-Connecteur de charge
-</h3>
-
-<p>
-Problème de recharge ? On le répare.
-</p>
-
+<a href="#tarifs" class="card">
+<div class="card-icon">⚡</div>
+<h3>Connecteur de charge</h3>
+<p>Votre iPhone ne charge plus ?</p>
 </a>
 
-
-
-<!-- CAMERA -->
-
-<a
-class="service"
-href="#tarifs"
->
-
-<div class="icon">
-◉
-</div>
-
-<h3>
-Caméra
-</h3>
-
-<p>
-Réparation ou remplacement
-</p>
-
+<a href="#tarifs" class="card">
+<div class="card-icon">◉</div>
+<h3>Caméra</h3>
+<p>Réparation ou remplacement de vos caméras.</p>
 </a>
 
-
-
-<!-- HAUT PARLEUR -->
-
-<a
-class="service"
-href="#tarifs"
->
-
-<div class="icon">
-♪
-</div>
-
-<h3>
-Haut-parleur / Micro
-</h3>
-
-<p>
-Son faible ou absent ?
-</p>
-
+<a href="#tarifs" class="card">
+<div class="card-icon">♬</div>
+<h3>Haut-parleur / Micro</h3>
+<p>Son faible ou absent ? On le répare !</p>
 </a>
 
-
-
-<!-- EAU -->
-
-<a
-class="service"
-href="#tarifs"
->
-
-<div class="icon">
-✣
-</div>
-
-<h3>
-Dégât des eaux
-</h3>
-
-<p>
-Diagnostic et réparation spécialisée
-</p>
-
+<a href="#tarifs" class="card">
+<div class="card-icon">💧</div>
+<h3>Dégât des eaux</h3>
+<p>Diagnostic et réparation spécialisée.</p>
 </a>
 
-
 </div>
 
 
+<div class="models" id="tarifs">
 
-<!-- ================= MODELES ================= -->
+<div class="badge">TOUS LES MODÈLES</div>
 
-<div class="models">
-
-<div class="eyebrow">
-Tous les modèles
-</div>
-
-
-<h2>
- iPhone
-</h2>
-
+<h3> <span>iPhone</span></h3>
 
 <ul>
-
-<li>
-iPhone 15 / 15 Pro / Pro Max
-</li>
-
-<li>
-iPhone 14 / 14 Pro / Pro Max
-</li>
-
-<li>
-iPhone 13 / 13 Pro / Pro Max
-</li>
-
-<li>
-iPhone 12 / 12 Pro / Pro Max
-</li>
-
-<li>
-iPhone 11 / 11 Pro / Pro Max
-</li>
-
-<li>
-iPhone SE — toutes générations
-</li>
-
+<li>iPhone 15 / 15 Pro / 15 Pro Max</li>
+<li>iPhone 14 / 14 Pro / 14 Pro Max</li>
+<li>iPhone 13 / 13 Pro / 13 Pro Max</li>
+<li>iPhone 12 / 12 Pro / 12 Pro Max</li>
+<li>iPhone 11 / 11 Pro / 11 Pro Max</li>
+<li>iPhone SE (toutes générations)</li>
 </ul>
 
-
-<a
-class="btn"
-href="#tarifs"
->
-
+<a href="#contact" class="main-button">
 Voir tous les tarifs →
-
 </a>
 
 </div>
 
 </div>
-
+</div>
 </section>
 
 
+<!-- POURQUOI NOUS -->
+<section class="why" id="apropos">
 
-<!-- ================= A PROPOS ================= -->
+<div class="why-content">
 
-<section id="apropos">
+<div class="repair-photo"></div>
 
-<div class="container">
+<div class="why-text">
 
-<div class="eyebrow">
-Pourquoi nous choisir ?
-</div>
-
-
-<h2>
-
-Votre satisfaction
-<span>
-est notre priorité
-</span>
-
-</h2>
-
-
-<p class="sub">
-
-Techniciens qualifiés, pièces de qualité
-et service client réactif.
-
-</p>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= TARIFS ================= -->
-
-<section id="tarifs">
-
-<div class="container">
-
-<div class="eyebrow">
-Tarifs
-</div>
-
+<small>POURQUOI NOUS CHOISIR ?</small>
 
 <h2>
-
-Des prix
-<span>
-transparents
-</span>
-
+Votre satisfaction<br>
+<span>est notre priorité</span>
 </h2>
 
-
-<p class="sub">
-
-Voici les tarifs. Tu pourras les modifier plus tard
-directement dans ce HTML.
-
+<p>
+Un service rapide, des techniciens qualifiés
+et un suivi personnalisé pour tous vos iPhone.
 </p>
-
-
-
-<div class="tarifs">
-
-
-<div class="price">
-
-<h3>
-Écran
-</h3>
-
-<strong>
-49€+
-</strong>
-
-</div>
-
-
-
-<div class="price">
-
-<h3>
-Batterie
-</h3>
-
-<strong>
-39€+
-</strong>
-
-</div>
-
-
-
-<div class="price">
-
-<h3>
-Connecteur
-</h3>
-
-<strong>
-Sur devis
-</strong>
-
-</div>
-
 
 </div>
 
@@ -831,50 +836,31 @@ Sur devis
 </section>
 
 
-
-<!-- ================= CONTACT ================= -->
-
-<section id="contact" class="contact">
+<!-- CONTACT -->
+<section class="contact" id="contact">
 
 <div class="container">
 
-<div class="eyebrow">
-Contact
-</div>
+<h2>Besoin d'une réparation ?</h2>
 
-
-<h2>
-
-Contactez
-<span>
-iPhoneFix
-</span>
-
-</h2>
-
-
-<p class="sub">
-
-Envoyez une photo de votre iPhone sur WhatsApp
-pour obtenir un premier diagnostic.
-
+<p>
+Contactez-nous pour obtenir un diagnostic et un tarif.
 </p>
 
+<div class="contact-buttons">
 
 <a
-class="btn"
+class="main-button"
 href="https://wa.me/33712345678"
-target="_blank"
->
-
-Contacter sur WhatsApp
-
+target="_blank">
+💬 Nous contacter sur WhatsApp
 </a>
 
-
-<div class="phone">
-
-07 12 34 56 78
+<a
+class="main-button"
+href="tel:+33712345678">
+📞 07 12 34 56 78
+</a>
 
 </div>
 
@@ -883,19 +869,31 @@ Contacter sur WhatsApp
 </section>
 
 
-
-<!-- ================= FOOTER ================= -->
-
+<!-- FOOTER -->
 <footer>
 
-<div class="container">
+<div class="container footer-content">
 
-© 2026 iPhoneFix — Réparation iPhone • Rapide • Fiable • Professionnel
+<div class="logo">
+<div class="logo-apple">●</div>
+<div>
+<div class="logo-text">iPhone<span>Fix</span></div>
+<div class="logo-sub">Réparation iPhone • Rapide • Fiable • Professionnel</div>
+</div>
+</div>
+
+<p>© 2026 iPhoneFix. Tous droits réservés.</p>
+
+<div class="social">
+<a href="#accueil">Accueil</a>
+<a href="#services">Services</a>
+<a href="#tarifs">Tarifs</a>
+<a href="#contact">Contact</a>
+</div>
 
 </div>
 
 </footer>
-
 
 </body>
 </html>
