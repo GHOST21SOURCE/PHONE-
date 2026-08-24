@@ -846,6 +846,270 @@ iPhone<span class="logo-blue">Fix</span>
 </div>
 
 </footer>
+<!-- =========================
+     RÉSERVATION iPHONEFIX
+========================= -->
 
+<section id="reservation" style="
+  padding:70px 20px;
+  background:#02080f;
+  color:white;
+  text-align:center;
+  border-top:1px solid #12304a;
+">
+  <div style="max-width:800px;margin:auto;">
+
+    <div style="
+      display:inline-block;
+      padding:8px 18px;
+      border:1px solid #008cff;
+      border-radius:30px;
+      color:#008cff;
+      font-weight:bold;
+      margin-bottom:15px;
+    ">
+      📅 PRISE DE RENDEZ-VOUS
+    </div>
+
+    <h2 style="font-size:38px;margin:10px 0;">
+      Réservez votre <span style="color:#008cff;">réparation</span>
+    </h2>
+
+    <p style="color:#b8c7d9;margin-bottom:35px;">
+      Choisissez votre réparation, votre date et votre créneau.
+    </p>
+
+    <form id="reservationForm" style="
+      background:#07121d;
+      border:1px solid #1d405d;
+      border-radius:18px;
+      padding:30px;
+      text-align:left;
+    ">
+
+      <label>Nom et prénom</label>
+      <input id="clientName" type="text" required placeholder="Votre nom" style="
+        width:100%;
+        box-sizing:border-box;
+        padding:15px;
+        margin:8px 0 18px;
+        background:#02080f;
+        color:white;
+        border:1px solid #31506a;
+        border-radius:10px;
+      ">
+
+      <label>Téléphone</label>
+      <input id="clientPhone" type="tel" required placeholder="07 12 34 56 78" style="
+        width:100%;
+        box-sizing:border-box;
+        padding:15px;
+        margin:8px 0 18px;
+        background:#02080f;
+        color:white;
+        border:1px solid #31506a;
+        border-radius:10px;
+      ">
+
+      <label>E-mail</label>
+      <input id="clientEmail" type="email" required placeholder="votre@email.com" style="
+        width:100%;
+        box-sizing:border-box;
+        padding:15px;
+        margin:8px 0 18px;
+        background:#02080f;
+        color:white;
+        border:1px solid #31506a;
+        border-radius:10px;
+      ">
+
+      <label>Réparation</label>
+      <select id="service" required style="
+        width:100%;
+        box-sizing:border-box;
+        padding:15px;
+        margin:8px 0 18px;
+        background:#02080f;
+        color:white;
+        border:1px solid #31506a;
+        border-radius:10px;
+      ">
+        <option value="">Choisir une réparation</option>
+        <option value="Écran cassé">Écran cassé</option>
+        <option value="Batterie">Batterie</option>
+        <option value="Connecteur de charge">Connecteur de charge</option>
+        <option value="Caméra">Caméra</option>
+        <option value="Haut-parleur / Micro">Haut-parleur / Micro</option>
+        <option value="Dégât des eaux">Dégât des eaux</option>
+      </select>
+
+      <label>Date</label>
+      <input id="appointmentDate" type="date" required style="
+        width:100%;
+        box-sizing:border-box;
+        padding:15px;
+        margin:8px 0 18px;
+        background:#02080f;
+        color:white;
+        border:1px solid #31506a;
+        border-radius:10px;
+      ">
+
+      <label>Créneau</label>
+      <select id="appointmentTime" required style="
+        width:100%;
+        box-sizing:border-box;
+        padding:15px;
+        margin:8px 0 25px;
+        background:#02080f;
+        color:white;
+        border:1px solid #31506a;
+        border-radius:10px;
+      ">
+        <option value="">Choisir un créneau</option>
+        <option value="09:00">09:00</option>
+        <option value="10:00">10:00</option>
+        <option value="11:00">11:00</option>
+        <option value="12:00">12:00</option>
+        <option value="14:00">14:00</option>
+        <option value="15:00">15:00</option>
+        <option value="16:00">16:00</option>
+        <option value="17:00">17:00</option>
+        <option value="18:00">18:00</option>
+      </select>
+
+      <button type="submit" style="
+        width:100%;
+        padding:16px;
+        border:0;
+        border-radius:30px;
+        background:#008cff;
+        color:white;
+        font-size:17px;
+        font-weight:bold;
+        cursor:pointer;
+      ">
+        📅 CONFIRMER MON RENDEZ-VOUS
+      </button>
+
+      <p id="reservationMessage" style="
+        text-align:center;
+        margin-top:20px;
+        font-weight:bold;
+      "></p>
+
+    </form>
+  </div>
+</section>
+
+<!-- Bibliothèque Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://cmpclwhmckioviabckn.supabase.co";
+
+/*
+  COLLE TA PUBLISHABLE KEY ENTRE LES GUILLEMETS CI-DESSOUS.
+  NE METS PAS UNE CLÉ SECRET / SERVICE_ROLE.
+*/
+const SUPABASE_PUBLISHABLE_KEY = "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_1MStyT6JB9J9m4UZI_tqwg_T1XtdExf;
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+const dateInput = document.getElementById("appointmentDate");
+const timeSelect = document.getElementById("appointmentTime");
+const form = document.getElementById("reservationForm");
+const message = document.getElementById("reservationMessage");
+
+/* Empêche de choisir une date passée */
+const today = new Date().toISOString().split("T")[0];
+dateInput.min = today;
+
+/* Vérification des créneaux déjà réservés */
+async function verifierCreneaux() {
+
+  const date = dateInput.value;
+
+  if (!date) return;
+
+  const { data, error } = await supabaseClient
+    .from("appointments")
+    .select("appointment_time")
+    .eq("appointment_date", date);
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  const horairesPris = (data || []).map(
+    rendezVous => rendezVous.appointment_time
+  );
+
+  Array.from(timeSelect.options).forEach(option => {
+
+    if (!option.value) return;
+
+    option.disabled = horairesPris.includes(option.value);
+
+    if (option.disabled) {
+      option.textContent = option.value + " — COMPLET";
+    } else {
+      option.textContent = option.value;
+    }
+
+  });
+
+  timeSelect.value = "";
+}
+
+dateInput.addEventListener("change", verifierCreneaux);
+
+/* Envoi du rendez-vous */
+form.addEventListener("submit", async function(event) {
+
+  event.preventDefault();
+
+  message.style.color = "#ffffff";
+  message.textContent = "Enregistrement du rendez-vous...";
+
+  const rendezVous = {
+    client_name: document.getElementById("clientName").value.trim(),
+    client_phone: document.getElementById("clientPhone").value.trim(),
+    client_email: document.getElementById("clientEmail").value.trim(),
+    service: document.getElementById("service").value,
+    appointment_date: dateInput.value,
+    appointment_time: timeSelect.value
+  };
+
+  const { error } = await supabaseClient
+    .from("appointments")
+    .insert([rendezVous]);
+
+  if (error) {
+
+    console.error(error);
+
+    message.style.color = "#ff5555";
+    message.textContent =
+      "Ce créneau vient peut-être d'être réservé. Choisissez-en un autre.";
+
+    await verifierCreneaux();
+
+    return;
+  }
+
+  message.style.color = "#00d084";
+  message.textContent =
+    "✅ Rendez-vous réservé avec succès !";
+
+  form.reset();
+
+  await verifierCreneaux();
+});
+</script>
 </body>
 </html>
